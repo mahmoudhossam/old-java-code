@@ -4,6 +4,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import java.io.Console;
 
 /**
+ * Authenticates a user based on a password's hash
  *
  * @author mhh91
  */
@@ -14,6 +15,7 @@ public class Auth {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //returns null when run in an IDE (Eclipse, Netbeans)
         Console con = System.console();
         con.printf("Enter password: ");
         char[] pw = con.readPassword();
