@@ -5,13 +5,15 @@ package test;
  * @author mhh91
  */
 
-import java.util.Calendar;
-import java.util.TimeZone;
+import java.util.*;
 
 public class Time {
 
     public static void main(String[] args) {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("EET"));
+        Locale egloc = new Locale("Ar","EG");
+        Calendar eg = Calendar.getInstance(egloc);
+        System.out.println(eg.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.SHORT,Locale.US));
         int hour = cal.get(Calendar.HOUR);
         int minute = cal.get(Calendar.MINUTE);
         int second = cal.get(Calendar.SECOND);
