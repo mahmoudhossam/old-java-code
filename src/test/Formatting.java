@@ -11,7 +11,7 @@ public class Formatting {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.printf("%c\n", 'c');
+        System.out.printf("%b\n", 123);
     }
 
 }
