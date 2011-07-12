@@ -11,30 +11,39 @@ public class MySQL {
     private String user;
     private String pass;
     private String database;
-    private String host;
+    private String host = "localhost";
     private int port = 3306;
 
-    /**
-     * Prevents the class from being instantiated without parameters.
-     */
-    private MySQL() {
-    }
 
-    private MySQL(String user, String pass, String database) {
+    private MySQL(String host, String user, String pass, String database) {
         this.user = user;
         this.pass = pass;
         this.database = database;
+        this.host = host;
     }
 
     /**
      * Sets the database up for connection.
+     * @param host The name of the MySQL server to connect to.
      * @param user MySQL username.
      * @param password MySQL password.
-     * @param database name of the database you want to connect to.
-     * @return a new instance of <code>MySQL</code>.
+     * @param database The Name of the database you want to connect to.
+     * @return A new instance of <code>MySQL</code>.
      */
-    public static MySQL setup(String user, String password, String database) {
-        return new MySQL(user, password, database);
+    public static MySQL setup(String host,String user, String password, String database) {
+        return new MySQL(host, user, password, database);
+    }
+    
+    /**
+     * Use this method when connecting to the local MySQL server.
+     * @param user MySQL username.
+     * @param password MySQL password.
+     * @param database The name of the database you want to connect to.
+     * @return A new instance of <code>MySQL</code>.
+     */
+    
+    public static MySQL setup(String user, String password, String database){
+        return new MySQL("localhost", user, password, database);
     }
 
     /**
@@ -48,8 +57,8 @@ public class MySQL {
     }
 
     /**
-     * Sets the server's hostname and port.
-     * @param hostName hostname to connect to.
+     * Sets the server's hostname and port, default is localhost.
+     * @param hostName The name of the MySQL server to connect to.
      * @param port connection port, default is 3306.
      */
     public void setHost(String hostName, int port) {
@@ -67,7 +76,7 @@ public class MySQL {
 
     /**
      * Connects to the database.
-     * @return an instance of <code>Connection</code>.
+     * @return An instance of <code>Connection</code>.
      * @throws SQLException 
      */
     public Connection connect() throws SQLException {
